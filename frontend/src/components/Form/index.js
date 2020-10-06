@@ -22,8 +22,7 @@ export default class Form extends Component {
       arrayGenerate
     });
     this.setState({apiResponse: response.data});
-    console.log(this.state)
-    
+    this.render()    
   };
 
   handleClick(e) {
@@ -37,20 +36,18 @@ export default class Form extends Component {
         <form className="selections" onSubmit={this.handleSubmit}>
           <div className="input-array">
             <label>Conjunto de números:</label> <br/>
-            <input type="text" placeholder="Ex...: 12, 5, 22, 13, 5"
+            <input type="text" placeholder="Ex...: 12, 5, 22, 13, 5, 3, 55, 102, 1548, 20134, 20, 166, 1, 0"
              value={this.state.value} onChange={this.handleChange}/>
           </div>
           <div className="radioInput">
             <div>
               <input type="radio" name="Ordenation" value="BubbleSort" id='BubbleSort' onClick={this.handleClick} defaultChecked/>
               <label htmlFor="BubbleSort">BubbleSort</label>
-
               <br />
             </div>
             <div>
               <input type="radio" name="Ordenation" value="InsertionSort" id='InsertionSort' onClick={this.handleClick}/>
               <label htmlFor="InsertionSort">InsertionSort</label>
-
               <br />
             </div>
             <div>
@@ -62,10 +59,20 @@ export default class Form extends Component {
               <label htmlFor="CoutingSort">CountingSort</label>
             </div>
           </div>
+          <br />
           <input className="buttonSubmit" type="submit" value="Enviar"/>
         </form>
       </div>
-    {this.state.response ? <div>{alert(this.state.apiResponse)}</div> : null}
+      {this.state.apiResponse === undefined ? null
+     : <div>
+       {
+         <>
+          <p>{"Array:" + this.state.apiResponse.array}</p>
+          <br/>
+          <p>{"Tempo:" + this.state.apiResponse.tempo}</p>
+         </>
+       }
+      </div>}
       </>
     )
   }
