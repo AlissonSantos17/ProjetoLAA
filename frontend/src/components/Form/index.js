@@ -69,7 +69,7 @@ export default class Form extends Component {
          <>
           <p>{"Array:" + this.state.apiResponse.array}</p>
           <br/>
-          <p>{"Tempo:" + this.state.apiResponse.tempo}</p>
+          <p>{"Tempo:" + this.state.apiResponse.tempo + "nanoseconds"}</p>
          </>
        }
       </div>}

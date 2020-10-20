@@ -7,13 +7,14 @@ module.exports = {
   async BubbleSort(req, res) {
     try {
       const { arrayGenerate } = req.body;
-      let timeStart = Date.now()
+      const NS_PER_SEC = 1e9;
+      const time = process.hrtime();
       const ordenacao = await BubbleSort(arrayGenerate);
-      let timeEnd = ((Date.now() - timeStart) / 1000) % 60
+      const diff = process.hrtime(time);
 
       const objeto = {
         'array': ordenacao,
-        'tempo': timeEnd 
+        'tempo': diff[0] * NS_PER_SEC + diff[1]
       };
 
       return res.json(objeto)
@@ -25,13 +26,14 @@ module.exports = {
   async InsertionSort(req, res) {
     try {
       const { arrayGenerate } = req.body;
-      let timeStart = Date.now()
+      const NS_PER_SEC = 1e9;
+      const time = process.hrtime();
       const ordenacao = await InsertionSort(arrayGenerate);
-      let timeEnd = ((Date.now() - timeStart) / 1000) % 60
+      const diff = process.hrtime(time);
 
       const objeto = {
         'array': ordenacao,
-        'tempo': timeEnd 
+        'tempo': diff[0] * NS_PER_SEC + diff[1]
       };
 
       return res.json(objeto)
@@ -43,13 +45,14 @@ module.exports = {
   async SelectionSort(req, res) {
     try {
       const { arrayGenerate } = req.body;
-      let timeStart = Date.now()
+      const NS_PER_SEC = 1e9;
+      const time = process.hrtime();
       const ordenacao = await SelectionSort(arrayGenerate);
-      let timeEnd = ((Date.now() - timeStart) / 1000) % 60
-      
+      const diff = process.hrtime(time);
+
       const objeto = {
         'array': ordenacao,
-        'tempo': timeEnd 
+        'tempo': diff[0] * NS_PER_SEC + diff[1]
       };
 
       return res.json(objeto)
@@ -61,13 +64,14 @@ module.exports = {
   async CountingSort(req, res) {
     try {
       const { arrayGenerate } = req.body;
-      let timeStart = Date.now()
+      const NS_PER_SEC = 1e9;
+      const time = process.hrtime();
       const ordenacao = await CountingSort(arrayGenerate);
-      let timeEnd = ((Date.now() - timeStart) / 1000) % 60
+      const diff = process.hrtime(time);
 
       const objeto = {
         'array': ordenacao,
-        'tempo': timeEnd 
+        'tempo': diff[0] * NS_PER_SEC + diff[1]
       };
 
       return res.json(objeto)
